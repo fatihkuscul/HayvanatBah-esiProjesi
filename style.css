@@ -6,3 +6,11 @@ body{
     margin-left: 100px;
     background-color: black;
 }
+
+p{
+    color: blanchedalmond;
+}
+
+.cizgi{
+    border: 1px solid brown;
+}

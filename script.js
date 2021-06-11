@@ -367,20 +367,23 @@ function hareketEt(){
     }) //avci hareket sonu
 }
 
+let avSayisi = 0;
 function avlan(){
         //kurt avlanma başı
         hayvanatBahcesi.kurt.forEach(i=>{
             hayvanatBahcesi.koyun.forEach(a=>{
-                if(Math.abs(i.x-a.x)<=4 || Math.abs(i.y-a.y) <=4 ){
+                if(Math.abs(i.x-a.x)<=4 && Math.abs(i.y-a.y) <=4 ){
                     console.log(`${i.id} numaralı kurt ${a.id} numaralı koyunu avladı`);
                     hayvanatBahcesi.koyun.splice(hayvanatBahcesi.koyun.indexOf(a),1);                    
+                    avSayisi++;
                 }
             });
 
             hayvanatBahcesi.kuscul.forEach(a=>{
-                if(Math.abs(i.x-a.x)<=4 || Math.abs(i.y-a.y) <=4 ){
+                if(Math.abs(i.x-a.x)<=4 && Math.abs(i.y-a.y) <=4 ){
                     console.log(`${i.id} numaralı kurt ${a.id} numaralı kuscul avladı`);
                     hayvanatBahcesi.kuscul.splice(hayvanatBahcesi.kuscul.indexOf(a),1); 
+                    avSayisi++;
                 }
             });
 
@@ -390,16 +393,18 @@ function avlan(){
         //aslan avlanma başı
         hayvanatBahcesi.aslan.forEach(i=>{
             hayvanatBahcesi.inek.forEach(a=>{
-                if(Math.abs(i.x-a.x)<=5 || Math.abs(i.y-a.y) <= 5 ){
+                if(Math.abs(i.x-a.x)<=5 && Math.abs(i.y-a.y) <= 5 ){
                     console.log(`${i.id} numaralı aslan ${a.id} numaralı inek avladı`);
                     hayvanatBahcesi.inek.splice(hayvanatBahcesi.inek.indexOf(a),1); 
+                    avSayisi++;
                 }
             });
 
             hayvanatBahcesi.koyun.forEach(a=>{
-                if(Math.abs(i.x-a.x)<=5 || Math.abs(i.y-a.y) <= 5 ){
+                if(Math.abs(i.x-a.x)<=5 && Math.abs(i.y-a.y) <= 5 ){
                     console.log(`${i.id} numaralı aslan ${a.id} numaralı koyun avladı`);
                     hayvanatBahcesi.koyun.splice(hayvanatBahcesi.koyun.indexOf(a),1);
+                    avSayisi++;
                 }
             });
 
@@ -408,44 +413,49 @@ function avlan(){
         //avci avlanma başı
         hayvanatBahcesi.avci.forEach(i=>{
             hayvanatBahcesi.inek.forEach(a=>{
-                if(Math.abs(i.x-a.x)<=8 || Math.abs(i.y-a.y) <= 8 ){
+                if(Math.abs(i.x-a.x)<=8 && Math.abs(i.y-a.y) <= 8 ){
                     console.log(`${i.id} numaralı avci ${a.id} numaralı inek avladı`);
                     hayvanatBahcesi.inek.splice(hayvanatBahcesi.inek.indexOf(a),1);;
+                    avSayisi++;
                 }
             });
 
             hayvanatBahcesi.koyun.forEach(a=>{
-                if(Math.abs(i.x-a.x)<=8 || Math.abs(i.y-a.y) <= 8 ){
+                if(Math.abs(i.x-a.x)<=8 && Math.abs(i.y-a.y) <= 8 ){
                     console.log(`${i.id} numaralı avci ${a.id} numaralı koyun avladı`);
                     hayvanatBahcesi.koyun.splice(hayvanatBahcesi.koyun.indexOf(a),1);
+                    avSayisi++;
                 }
             });
 
             hayvanatBahcesi.kuscul.forEach(a=>{
-                if(Math.abs(i.x-a.x)<=8 || Math.abs(i.y-a.y) <= 8 ){
+                if(Math.abs(i.x-a.x)<=8 && Math.abs(i.y-a.y) <= 8 ){
                     console.log(`${i.id} numaralı avci ${a.id} numaralı kuscul avladı`);
                     hayvanatBahcesi.kuscul.splice(hayvanatBahcesi.kuscul.indexOf(a),1);
+                    avSayisi++;
                 }
             });
 
             hayvanatBahcesi.kurt.forEach(a=>{
-                if(Math.abs(i.x-a.x)<=8 || Math.abs(i.y-a.y) <= 8 ){
+                if(Math.abs(i.x-a.x)<=8 && Math.abs(i.y-a.y) <= 8 ){
                     console.log(`${i.id} numaralı avci ${a.id} numaralı kurt avladı`);
                     hayvanatBahcesi.kurt.splice(hayvanatBahcesi.kurt.indexOf(a),1);
+                    avSayisi++;
                 }
             });
 
             hayvanatBahcesi.aslan.forEach(a=>{
-                if(Math.abs(i.x-a.x)<=8 || Math.abs(i.y-a.y) <= 8 ){
+                if(Math.abs(i.x-a.x)<=8 && Math.abs(i.y-a.y) <= 8 ){
                     console.log(`${i.id} numaralı avci ${a.id} numaralı aslan avladı`);
                     hayvanatBahcesi.aslan.splice(hayvanatBahcesi.aslan.indexOf(a),1);
+                    avSayisi++;
                 }
             });
 
         }) //avci avlanma sonu
 }
 
-let sayac = 0;
+// yeni doğanların cinsiyeti
 function rasgeleCinsiyet(){
     let sayi = Math.floor(Math.random()*1000)%2;
     let cinsiyet;
@@ -455,22 +465,28 @@ function rasgeleCinsiyet(){
     }else{
         cinsiyet = "erkek";
     }
-    sayac++; // toplam kaç hayvan doğdu sayalım. Yeni hayvanlara id eklemek için de kullanıldı
 
     return cinsiyet;
 }
 
+// ÇİFTLEŞMELER
+let yeniKoyunSayisi = 0;
+let yeniKurtSayisi = 0;
+let yeniInekSayisi =0;
+let yeniKusculSayisi = 0;
+let yeniAslanSayisi = 0;
 function ciflesme(){
     // koyun çifleşme başı
     hayvanatBahcesi.koyun.forEach(i=>{
         hayvanatBahcesi.koyun.forEach(a=>{
-            if(Math.abs(i.x-a.x)<=3 || Math.abs(i.y-a.y) <=3 ){
+            if((Math.abs(i.x-a.x)<=3) && (Math.abs(i.y-a.y) <=3) && (i.cins !== a.cins) ){
+
                 let cins = rasgeleCinsiyet();
-                console.log(cins + " koyun doğdu id numarsı " + sayac);
-                let yeniKoyun = new Hayvan("koyun" , cins , "purple" , 2 , "yeniKoyun"+sayac)      
-                let sonEleman = hayvanatBahcesi.koyun.length;
-                // hayvanatBahcesi.koyun[sonEleman] = yeniKoyun;
-                // hayvanatBahcesi.koyun.push(yeniKoyun);               
+                console.log(cins + " koyun doğdu. id numarsı: yeniKoyun" + yeniKoyunSayisi);
+                let yeniKoyun = new Hayvan("koyun" , cins , "purple" , 2 , "yeniKoyun"+yeniKoyunSayisi);
+                hayvanatBahcesi.koyun.push(yeniKoyun); 
+                yeniKoyunSayisi++;
+             
             }
         });
 
@@ -479,8 +495,12 @@ function ciflesme(){
     // kurt çifleşme başı
     hayvanatBahcesi.kurt.forEach(i=>{
         hayvanatBahcesi.kurt.forEach(a=>{
-            if(Math.abs(i.x-a.x)<=3 || Math.abs(i.y-a.y) <=3 ){
-                console.log("kurt doğdu");
+            if((Math.abs(i.x-a.x)<=3) && (Math.abs(i.y-a.y) <=3) && (i.cins !== a.cins) ){
+                let cins = rasgeleCinsiyet();
+                console.log(cins + " kurt doğdu. id numarsı: yeniKurt" + yeniKurtSayisi);
+                let yeniKurt = new Hayvan("kurt" , cins , "white" , 3 , "yeniKurt"+yeniKurtSayisi);
+                hayvanatBahcesi.kurt.push(yeniKurt); 
+                yeniKurtSayisi++;
             }
         });
 
@@ -489,8 +509,12 @@ function ciflesme(){
     // inek çifleşme başı
     hayvanatBahcesi.inek.forEach(i=>{
         hayvanatBahcesi.inek.forEach(a=>{
-            if(Math.abs(i.x-a.x)<=3 || Math.abs(i.y-a.y) <=3 ){
-                console.log("inek doğdu");
+            if((Math.abs(i.x-a.x)<=3) && (Math.abs(i.y-a.y) <=3) && (i.cins !== a.cins) ){
+                let cins = rasgeleCinsiyet();
+                console.log(cins + " inek doğdu. id numarsı: yeniInek" + yeniInekSayisi);
+                let yeniInek = new Hayvan("inek" , cins , "blue" , 2 , "yeniInek"+yeniInekSayisi);
+                hayvanatBahcesi.inek.push(yeniInek); 
+                yeniInekSayisi++;
             }
         });
 
@@ -499,8 +523,12 @@ function ciflesme(){
     // kuscul çifleşme başı
     hayvanatBahcesi.kuscul.forEach(i=>{
         hayvanatBahcesi.kuscul.forEach(a=>{
-            if(Math.abs(i.x-a.x)<=3 || Math.abs(i.y-a.y) <=3 ){
-                console.log("kuscul doğdu");
+            if((Math.abs(i.x-a.x)<=3) && (Math.abs(i.y-a.y) <=3) && (i.cins !== a.cins) ){
+                let cins = rasgeleCinsiyet();
+                console.log(cins + " kuscul doğdu. id numarsı: yeniKuscul" + yeniKusculSayisi);
+                let yeniKuscul = new Hayvan("kuscul" , cins , "red" , 1 , "yeniKuscul"+yeniKusculSayisi);
+                hayvanatBahcesi.kuscul.push(yeniKuscul); 
+                yeniKusculSayisi++;
             }
         });
 
@@ -509,8 +537,12 @@ function ciflesme(){
     // aslan çifleşme başı
     hayvanatBahcesi.aslan.forEach(i=>{
         hayvanatBahcesi.aslan.forEach(a=>{
-            if(Math.abs(i.x-a.x)<=3 || Math.abs(i.y-a.y) <=3 ){
-                console.log("aslan doğdu");
+            if((Math.abs(i.x-a.x)<=3) && (Math.abs(i.y-a.y) <=3) && (i.cins !== a.cins) ){
+                let cins = rasgeleCinsiyet();
+                console.log(cins + " aslan doğdu. id numarsı: yeniAslan" + yeniAslanSayisi);
+                let yeniAslan = new Hayvan("aslan" , cins , "red" , 1 , "yeniAslan"+yeniAslanSayisi);
+                hayvanatBahcesi.aslan.push(yeniAslan); 
+                yeniAslanSayisi++;
             }
         });
 
@@ -519,24 +551,93 @@ function ciflesme(){
 }
 
 
+// sonuçları Ekranına Yazma
+function ekranaYazma(){
+    console.log("***********************************************************");
+    let tavukSayisi = 0;
+    let horozSayisi = 0;
+    hayvanatBahcesi.kuscul.forEach(i=>{
+        if(i.cins === "disi"){
+            tavukSayisi++;
+        }else{
+            horozSayisi++;
+        }
+    });
 
-for(let i=0; i<100; i++){
+    let sayac = yeniKoyunSayisi + yeniKurtSayisi + yeniInekSayisi + yeniKusculSayisi + yeniAslanSayisi;
+    console.log("Toplam doğan hayvan sayısı: " + sayac);
+    console.log("Toplam avlanılan hayvan: " + avSayisi);
+
+    console.log("Hayvanat Bahçesinde Geride Kalan Hayvanlar: " + 
+                hayvanatBahcesi.koyun.length + " adet koyun, " + 
+                hayvanatBahcesi.kurt.length + " adet kurt, " + 
+                hayvanatBahcesi.aslan.length + " adet aslan, " +
+                hayvanatBahcesi.inek.length + " adet inek, " +
+                tavukSayisi + " adet tavuk, " +
+                horozSayisi + " adet horoz, " +
+                hayvanatBahcesi.avci.length + " adet avcı var."
+                );
+
+    console.log(hayvanatBahcesi);
+
+    let sonuclar = document.getElementById("sonuc");
+    sonuclar.innerHTML = `
+        <div class="row">
+            <div class="col-6"> 
+                <p>Toplam doğan hayvan sayısı: ${sayac}</p> 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6"> 
+                <p>Toplam avlanılan hayvan sayısı: ${avSayisi}</p>
+            </div>
+        </div>
+
+        <hr class="cizgi">
+
+        <div class="row">
+            <div class="col-12"> 
+                <p>Hayvanat Bahçesinde Geride Kalan Hayvanlar:</p> 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2"> 
+                <p>Koyun: ${hayvanatBahcesi.koyun.length}</p> 
+            </div>
+            <div class="col-2"> 
+                <p>İnek: ${hayvanatBahcesi.inek.length}</p>
+            </div>
+            <div class="col-2"> 
+                <p>Kurt ${hayvanatBahcesi.kurt.length}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2"> 
+                <p>Aslan: ${hayvanatBahcesi.aslan.length}</p>
+            </div>
+            <div class="col-2"> 
+                <p>Tavuk: ${tavukSayisi}</p>
+            </div>
+            <div class="col-2"> 
+                <p>Horoz: ${horozSayisi}</p>
+            </div>
+        </div>
+    `
+}
+
+
+// 1000 adım sonucunda oyun biter
+function olaylar(){
     hareketEt();
     hayvanCiz();
     avlan();
     ciflesme();
+    ekranaYazma();
 }
 
-
-
-console.log("***********************************************************");
-console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-
-console.log("Hayvanat Bahçesinde Geride Kalan Hayvanlar: " + 
-            hayvanatBahcesi.koyun.length + " adet koyun, " + 
-            hayvanatBahcesi.kurt.length + " adet kurt, " + 
-            hayvanatBahcesi.aslan.length + " adet aslan, " +
-            hayvanatBahcesi.inek.length + " adet inek, " +
-            hayvanatBahcesi.kuscul.length + " adet horoz ve tavuk, " +
-            hayvanatBahcesi.avci.length + " adet avcı var"
-            );
+for(let i=0; i<1000; i++){
+    setTimeout(olaylar, 1000);
+}
